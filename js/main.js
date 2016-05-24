@@ -31,12 +31,19 @@ $(document).ready(function(){
       var entero = Math.round(numero);
       return entero;
    };
-   var tamano= imagenes.length;
-   var num=numeroAleatorio(0,tamano);
+  
    
    //Inserta imagen aleatoria en el html FUNCIONA!
    function imagenAleatoria(){
-      $('#caja-foto').html('<img id="foto" alt='+ nombres[num] +' src="fotos/'+ imagenes[num] +' "/>' );   
+      var tamano= imagenes.length;
+      var num=numeroAleatorio(0,tamano);
+      
+      var rutaImagen='fotos/' + imagenes[num];
+      var altImagen=nombres[num]
+      $('#imagenAlumna').attr({
+         'src': rutaImagen,
+         'alt':altImagen
+      });
    };
    
    //Cuando seleccionen la opcion Mexico se llama a la funcion imagenAleatoria
@@ -51,30 +58,29 @@ $(document).ready(function(){
    var totalPuntos=0;
 
    //Para contar los intentos YA FUNCIONAN ALERTAS DE INTENTOS
-   var intentos=0
+   var intentos=1
    var i=4
 
    //Comprobar respuesta
    $('#btnConfirmar').click(function(){
       //FUNCIONA la comparacion
       var nombre=$('#inputNombre').val().toLowerCase();
-      var nombreImagen=$("#foto").attr("alt").toLowerCase();
+      var nombreImagen=$("#imagenAlumna").attr("alt").toLowerCase();
       //En cada click se incrementa el numero de intentos
       intentos++
       //Comparar nombre de imagen con input
       if(nombre==nombreImagen){
          alert("Bien hecho!");
-         // No sale otra imagen
          imagenAleatoria();
          totalPuntos+=5
          $("span").text(totalPuntos);
       }else{
-         if(intentos<5){
-            alert("Incorrectotienes " + i + "intentos mas");
-             i-- 
+         if(intentos<=5){
+            alert("Incorrecto tienes " + i + "intentos mas");
+            i--
+            // intentos++
          } else {
             alert("Lo siento se acabaron tus intentos! Prueba con otra imagen");
-            // No sale otra imagen
             imagenAleatoria();
             totalPuntos--
             $("span").text(totalPuntos);
