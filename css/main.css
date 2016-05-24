@@ -1,0 +1,23 @@
+body{
+	font-family: 'Open Sans', sans-serif;
+}
+#sedes{
+	background-color: #FBCA05;
+	width:100%;
+	font-size: 20px;
+}
+#caja-foto img{
+	max-width: 300px;
+	margin: 2%;
+}
+#nombre{
+	margin-top:10%;
+	width: 70%;
+}
+h3{
+	display: inline-block;
+}
+#puntaje{
+	font-size: 20px;
+	display: inline-block;
+}
