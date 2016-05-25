@@ -4,9 +4,9 @@
    var imagenes = [
       "Alma Patricia Jimenez.JPG",  "Ana Maria Barbosa.JPG",
       "Analy Miranda.JPG",          "Areli Rodriguez.JPG",
-      "Beatriz Quesadas.JPG",       "Claudia Hernández.JPG",
+      "Beatriz Quesadas.JPG",  "Cecilia Guadalupe Ampudia.JPG",     "Claudia Hernández.JPG", 
       "Daniela Belem García.JPG",   "Elisa Guadalupe Martínez.JPG",
-      "Evelyn Vázquez.JPG",         "Gabriela Peñaloza.JPG",
+      "Evelyn Vázquez.JPG",         "Gabriela Peñaloza.JPG", "Gabriela Tayde Morales.JPG",
       "Grissel Coutiño.JPG",        "Guadalupe Guerrero.JPG",
       "Johana Alexa Vargas.JPG",    "Joyce Zeltzin Hernández.JPG",
       "Juana Ofelia García.JPG",    "Karen A. Sharon De Diego.JPG",
@@ -20,8 +20,8 @@
       "Sandra Bollo.JPG",           "Sandra Díaz.JPG",
       "Vianey Tavatha Moreno.JPG",  "Zazil Aurora Martinez.JPG"
    ];
-   var nombres = [ "Paty", "Ana", "Analy", "Areli", "Beatriz", "Claudia", 
-      "Daniela", "Elisa", "Evelyn", "Gabriela", "Griss", "Lupita", "Johana", 
+   var nombres = [ "Paty", "Ana", "Analy", "Areli", "Beatriz", "Cecilia", "Claudia", 
+      "Daniela", "Elisa", "Evelyn", "Gabriela", "Tayde", "Griss", "Lupita", "Johana", 
       "Joyce", "Ofelia", "Sharon", "Karen", "Karen", "Monica", "Karla", "Leslie", 
       "Lilian", "Milca", "Naibit", "Nayeli", "Nelly", "Reyna", "Adriana", "Ruth",
       "Ruth", "Sandra", "San", "Vian", "Zaz"
@@ -37,7 +37,7 @@
    //Inserta imagen aleatoria en el html FUNCIONA!
    function imagenAleatoria(){
       var tamano= imagenes.length;
-      var num=numeroAleatorio(0,tamano);
+      num=numeroAleatorio(0,tamano);
       //Se coloca en el input, selecciona el contenido para no tener q borrarlo
       $('#inputNombre').focus();
       $('#inputNombre').select();
@@ -45,12 +45,17 @@
       intentos=1
       i=4
       //Cambia atributos de src y alt a imagenes
-      var rutaImagen='fotos/' + imagenes[num];
-      var altImagen=nombres[num]
-      $('#imagenAlumna').attr({
-         'src': rutaImagen,
-         'alt':altImagen
-      });
+      if(tamano > 0 ){
+         var rutaImagen='fotos/' + imagenes[num];
+         var altImagen=nombres[num]
+         $('#imagenAlumna').attr({
+            'src': rutaImagen,
+            'alt':altImagen
+         }); 
+      } else {
+         alert("¡¡¡ FELICIDADES !!! Conoces a todas tus compañeritas :)");
+      }
+      
    };
 
    //Cuando seleccionen la opcion Mexico se llama a la funcion imagenAleatoria
@@ -58,6 +63,8 @@
       var sede=$(this).val();
       if (sede=="mexico"){
          imagenAleatoria();
+      } else {
+         alert("Lo sentimos, esa sede no está disponible.")
       }
    });
 
@@ -79,11 +86,13 @@ $(document).ready(function(){
       //Comparar nombre de imagen con input
       if(nombre==nombreImagen){
          alert("Bien hecho!");
+         //Sacar del array
+         nombres.splice(num,1);
+         imagenes.splice(num,1);
          imagenAleatoria();
          totalPuntos+=5
          $("span").text(totalPuntos);
-         // nombres.splice(num,1)
-         // imagenes.splice(num,1)
+         
       }else{
          if(intentos<=5){
             alert("Incorrecto tienes " + i + " intentos mas");

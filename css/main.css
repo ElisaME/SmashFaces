@@ -1,14 +1,23 @@
 body{
-	font-family: 'Open Sans', sans-serif;
+	font-family: 'Open Sans', sans-serif !important;
+	background-color: #92D1B4!important;
+}
+h1{
+	background-color: #4AB0AA;
+	padding:1%;
+	border-radius: 3px;
+	color: #fff !important;
 }
 #sedes{
-	background-color: #FBCA05;
+	background-color: #4AB0AA;
 	width:100%;
 	font-size: 20px;
+	color: #fff !important;
 }
 #caja-foto img{
 	max-width: 300px;
 	margin: 2%;
+	border:3px solid #4AB0AA;
 }
 #nombre{
 	margin-top:10%;
@@ -20,4 +29,15 @@ h3{
 #puntaje{
 	font-size: 20px;
 	display: inline-block;
+}
+#inputNombre{
+	width:40%;
+}
+#btnConfirmar{
+	background-color: #F2716C;
+	border-radius: 3px;
+	padding: 5px;
+	color: #fff;
+	display: block;
+	margin-top: 2%;
 }
